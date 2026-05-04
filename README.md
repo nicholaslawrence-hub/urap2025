@@ -1,6 +1,9 @@
-# Introduction
+### Introduction
 
-This is a full compendium of my work from my recent position as an Undergraduate Research Apprentice at the UC Berkeley Dow Lab. Below is a discussion/instructions about the implementation of my Streamlit PADO visualizer, since I think that's the most engaging capstone work that I did at the laboratory.
+This is a full compendium of my work from my recent position as an Undergraduate Research Apprentice at the UC Berkeley Dow Lab. 
+
+Below is a discussion/instructions about the implementation of my Streamlit PADO visualizer, since I think that's the most engaging capstone work that I did at the laboratory.
+
 Throughout this process, I've developed my skills in both data visualization, public health demography, as well as more technical Python skills such as the usage of:
 - **Geopandas**, an open-source ArcGIS Python library
 - **Folio**, a data visualization and mapping tool
@@ -8,6 +11,8 @@ Throughout this process, I've developed my skills in both data visualization, pu
 - Geographical **clustering** algorithms, such as k-nearest-neighbors and Ripley's K-function
 
 My overarching goal during this time was to develop a method for visualizing and improving accessibility to data pertaining to the unique distribution of private auxiliary pharmacies (PADOs) throughout Mexico. PADOs have grown in prevalence through the years, as they can offer rudimentary primary care services, as well as prescription medication. However, some concerns exist surrounding health accessibility to Mexican residents in underserved or marginalized areas.
+
+I've included several CSVs and XLSX files for context on my work, and to facilitate reproducibility. 
 
 # Healthcare Facilities Visualizer
 
@@ -62,28 +67,18 @@ healthcare-visualizer/
 │   └── Morelos_completo_zip_codes.xlsx
 ```
 
-### Running the Streamlit App
-
-```bash
-streamlit run app.py
-```
-
-Navigate to `http://localhost:8501` in your browser.
-
-### Running Analysis in Jupyter
-
-I've also implemented some 
+### Data Analysis
 
 ```bash
 jupyter notebook analysis.ipynb
 ```
 
-Key analysis steps:
-1. Load and clean data
-2. Nearest neighbor matching between datasets
-3. KMeans clustering (configurable n_clusters)
-4. DBSCAN density-based clustering
-5. Visualization with Folium
+## Data Processing and Analysis Pipeline
+
+1. **Load PADO Data**: Read Excel files with facility and location data
+2. **Match**: Find nearest detailed location for each facility using Euclidean distance
+3. **Cluster**: Apply KMeans and DBSCAN algorithms
+4. **Visualize**: Generate interactive Folium map with heatmap overlay
 
 ### Clustering Parameters
 
@@ -97,16 +92,12 @@ eps = 0.01  # Maximum distance between points
 min_samples = 3  # Minimum cluster size
 ```
 
-## Data Processing 
+These can be edited/changed to your liking in the `visualizer-app.py` file. 
 
-1. **Load PADO Data**: Read Excel files with facility and location data
-2. **Filter**: Remove invalid coordinates and header rows
-3. **Match**: Find nearest detailed location for each facility using Euclidean distance
-4. **Cluster**: Apply KMeans and DBSCAN algorithms
-5. **Visualize**: Generate interactive Folium map with heatmap overlay
+### Execution
 
-## Output
+```bash
+streamlit run app.py
+```
 
-- Interactive map with PADO locations, colored by cluster 
-- Downloadable CSV with matched data
-- Statistical summaries (facility counts, cluster distributions)
+Navigate to `http://localhost:8501` in your browser.
