@@ -14,7 +14,7 @@ My overarching goal during this time was to develop a method for visualizing and
 
 I've included several CSVs and XLSX files for context on my work, and to facilitate reproducibility. 
 
-### PADO Visualizer
+# PADO Visualizer
 
 An Interactive geospatial analysis and visualization tool for PADO distribution in Morelos, Mexico. I hope to expand this soon to other Mexican states, but data validation/reliability is currently a concern. 
 
